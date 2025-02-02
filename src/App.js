@@ -109,13 +109,19 @@ function App() {
       });
 
       if(createUserResponse.status === 200) {
-        const response = await axios.get(`${BASE_URL}/${GET_INSIGHTS}/${username}`);
+        const response = await axios.get(`${BASE_URL}/${GET_INSIGHTS}/${username}`, {
+          timeout: 120000,
+        });
         setInsights(response.data);
       }else {
         console.error("User creation failed:", createUserResponse.data);
       }
     } catch (error) {
-      console.error("Error fetching insights", error);
+      if (error.code === 'ECONNABORTED') {
+        console.error("Request timed out. Please try again later.");
+      } else {
+        console.error("Error fetching insights", error);
+      }
     } finally {
       setLoading(false);
     }
