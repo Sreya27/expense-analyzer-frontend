@@ -7,29 +7,32 @@ import { insights as dummyInsights } from "./constant/insights";
 
 function App() {
 
-  const [name, setName] = useState("");
+  const [username, setUsername
+  ] = useState("");
   const [salary, setSalary] = useState("");
   const [goal, setGoal] = useState("");
   const [timeline, setTimeline] = useState("");
   const [insights, setInsights] = useState(dummyInsights);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
-    name: "",
+    username: "",
     salary: "",
     goal: "",
     timeline: "",
   });
 
-  const validateName = (value) => {
+  const validateUsername = (value) => {
     if (!value) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        name: "Please enter your name.",
+        username
+  : "Please enter your username",
       }));
     } else {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        name: "",
+        username
+  : "",
       }));
     }
   };
@@ -78,7 +81,8 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (errors.name || errors.salary || errors.goal || errors.timeline) {
+    if (errors.username
+ || errors.salary || errors.goal || errors.timeline) {
       return;
     }
 
@@ -86,7 +90,8 @@ function App() {
 
     try {
       const response = await axios.post(`${BASE_URL}/${GET_INSIGHTS}`, {
-        name,
+        username
+  ,
         salary,
         goal,
         timeline,
@@ -101,7 +106,7 @@ function App() {
 
   // Check if the form is valid and all fields are filled
   const isFormValid =
-    name &&
+    username &&
     salary &&
     goal &&
     timeline &&
@@ -115,14 +120,19 @@ function App() {
         <h1>Expense Tracker</h1>
       </header> */}
       <main>
-        {/* <form onSubmit={handleSubmit} className="input-container">
+        {/* <form onSubmit={handleSubmit} className
+  ="input-container">
           <input
             type="text"
-            placeholder="Enter name"
-            value={name}
+            placeholder="Enter username
+      "
+            value={username
+      }
             onChange={(e) => {
-              setName(e.target.value);
-              validateName(e.target.value);
+              setUsername
+        (e.target.value);
+              validateUsername
+        (e.target.value);
             }}
           />
 
@@ -136,7 +146,8 @@ function App() {
               validateSalary(e.target.value);
             }}
           />
-          {errors.salary && <span className="error">{errors.salary}</span>}
+          {errors.salary && <span className
+    ="error">{errors.salary}</span>}
 
           <input
             type="text"
@@ -147,7 +158,8 @@ function App() {
               validateGoal(e.target.value);
             }}
           />
-          {errors.goal && <span className="error">{errors.goal}</span>}
+          {errors.goal && <span className
+    ="error">{errors.goal}</span>}
 
           <input
             type="number"
@@ -159,9 +171,11 @@ function App() {
               validateTimeline(e.target.value);
             }}
           />
-          {errors.timeline && <span className="error">{errors.timeline}</span>}
+          {errors.timeline && <span className
+    ="error">{errors.timeline}</span>}
 
-          <div className="button-container">
+          <div className
+    ="button-container">
             <button type="submit" disabled={loading || !isFormValid}>
               {loading ? "Loading..." : "Get Insights"}
             </button>
