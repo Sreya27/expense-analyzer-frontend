@@ -15,6 +15,7 @@ body {
 header {
   text-align: center;
   margin-bottom: 30px;
+  color: #5A2EC2;
 }
 
 .input-container {
@@ -66,30 +67,42 @@ button:disabled {
   background-color: #ccc;
 }
 
-/* .insights-container {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.insight-cards {
+/* Centered loading screen */
+.loading-screen {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: 80vh; /* Center vertically */
 }
 
-.insight-card {
-  background-color: #fff;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 280px;
-  text-align: left;
+/* Loading spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  border-top: 5px solid #5A2EC2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
 }
 
-.insight-card h3 {
-  margin-top: 0;
-} */
+/* Loading message */
+.loading-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5A2EC2;
+  animation: fadeInOut 1.5s infinite alternate;
+}
+
+@keyframes fadeInOut {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .error {
   color: red;

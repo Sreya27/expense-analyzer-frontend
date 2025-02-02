@@ -5,7 +5,7 @@ const Insights = ({ insightsData }) => {
   return (
     <div className="insights-container">
       <div className="header">
-        <h1>Spending Optimization Analysis</h1>
+        <h1>Spending Optimization for the month</h1>
       </div>
 
       <div className="grid-container">
