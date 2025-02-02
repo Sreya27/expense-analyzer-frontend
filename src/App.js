@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import { BASE_URL, GET_INSIGHTS } from "./constant/endpoint";
+import { BASE_URL, CREATE_USER } from "./constant/endpoint";
 import Insights from "./pages/Insights";
 import { insights as dummyInsights } from "./constant/insights";
 
@@ -89,7 +89,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${BASE_URL}/${GET_INSIGHTS}`, {
+      const response = await axios.post(`${BASE_URL}/${CREATE_USER}`, {
         username
   ,
         salary,
