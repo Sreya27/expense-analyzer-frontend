@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { BASE_URL, GET_INSIGHTS } from "./constant/endpoint";
-import SpendingInsights from "./pages/Insights";
+import Insights from "./pages/Insights";
 import { insights as dummyInsights } from "./constant/insights";
 
 function App() {
@@ -170,7 +170,7 @@ function App() {
 
         
           {insights && insights.ActionableInsights?.length > 0 ? (
-            <SpendingInsights insightsData={insights} />
+            <Insights insightsData={insights} />
           ) : (
             <p>No insights available.</p>
           )}

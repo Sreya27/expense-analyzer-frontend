@@ -18,12 +18,13 @@ const Insights = ({ insightsData}) => {
             <div className="spending-details">
               
               <div className="spending">
-                <p>Current Spending</p>
+              <p style={{ color: 'RED' }}>Current Spending</p>
                 <h3>₹{insight.Actual_Spending.toLocaleString()}</h3>
               </div>
               <div className="budget">
-                <p>Recommended Budget</p>
-                <h3 className="budget-amount">₹{insight.Budget_Limit.toLocaleString()}</h3>
+                <p style={{ color: 'green' }}>Recommended Budget</p>
+                <h3 className="budget-amount" style={{ color: 'green' }}>₹{insight.Budget_Limit.toLocaleString()}</h3>
+
               </div>
               
             </div>
