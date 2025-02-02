@@ -157,7 +157,7 @@ function App() {
               <div className="spinner"></div>
               <p className="loading-text">{loadingMessage}</p>
             </div>
-          ) : insights && insights.Actionable_Insights?.length > 0 ? (
+          ) : insights && insights.insights?.length > 0 ? (
             <Insights insightsData={insights} />
           ) : (
             <form onSubmit={handleSubmit} className="input-container">
