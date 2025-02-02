@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import { BASE_URL, CREATE_USER } from "./constant/endpoint";
+import { BASE_URL, CREATE_USER, GET_INSIGHTS } from "./constant/endpoint";
 import Insights from "./pages/Insights";
-import { insights as dummyInsights } from "./constant/insights";
+import { insights as dummyInsights} from "./constant/insights";
 
 function App() {
 
@@ -89,14 +89,19 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${BASE_URL}/${CREATE_USER}`, {
-        username
-  ,
+      const createUserResponse = await axios.post(`${BASE_URL}/${CREATE_USER}`, {
+        username,
         salary,
         goal,
         timeline,
       });
-      setInsights(response.data);
+
+      if(createUserResponse.status === 200) {
+        const response = await axios.get(`${BASE_URL}/${GET_INSIGHTS}/${username}`);
+        setInsights(response.data);
+      }else {
+        console.error("User creation failed:", createUserResponse.data);
+      }
     } catch (error) {
       console.error("Error fetching insights", error);
     } finally {
@@ -183,8 +188,8 @@ function App() {
         </form> */}
 
         
-          {insights && insights.ActionableInsights?.length > 0 ? (
-            <Insights insightsData={insights} />
+          {dummyInsights && dummyInsights.insights?.length > 0 ? (
+            <Insights insightsData={dummyInsights} />
           ) : (
             <p>No insights available.</p>
           )}
